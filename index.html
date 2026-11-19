@@ -26,6 +26,7 @@ body.modal-open{overflow:hidden}
 body.modal-open .app-container{overflow:hidden}
 .app-container{width:100%;max-width:100%;background:transparent;height:100vh;height:100dvh;position:relative;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 .top-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;position:sticky;top:0;z-index:100;flex-shrink:0;color:#183b5a!important;border-bottom:1px solid rgba(194,211,227,.75);box-shadow:0 3px 15px rgba(29,62,91,.055)!important;background:linear-gradient(135deg,#ffffff 0%,#f2f9ff 45%,#c4e3f7 100%);backdrop-filter:blur(10px)}
+.top-bar-left{display:flex;align-items:center;gap:10px;min-width:0}
 .clock-time{font-size:12px;font-weight:600;color:#174b73;letter-spacing:.4px;line-height:1.15;font-variant-numeric:tabular-nums;white-space:nowrap}
 .clock-time .sec-flip{display:inline-block;transform-origin:center 60%;transition:transform .3s cubic-bezier(.4,0,.2,1);min-width:1.4em;text-align:left}
 .clock-time .sec-flip.flip{animation:secFlip .42s cubic-bezier(.4,0,.2,1)}
@@ -378,7 +379,7 @@ body.modal-open .app-container{overflow:hidden}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.topbar-biru::before{animation:none!important;display:none!important}.success-mark,.toast.show,.modal-close,.modal-options button,.success-actions>button{animation:none!important;transition:none!important}}
 
 /* ===== PENYELARASAN ANIMASI DENGAN BA TERTIB BAYAR ===== */
-.install-btn{display:none;flex:0 0 38px;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.42);border-radius:12px;background:rgba(255,255,255,.16);color:#fff;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .2s ease,background .2s ease}
+.install-btn{display:none;flex:0 0 34px;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid rgba(31,105,153,.22);border-radius:10px;background:linear-gradient(145deg,#fff,#e8f4fb);color:#176b9f;cursor:pointer;box-shadow:0 2px 7px rgba(26,91,139,.10);transition:transform .2s ease,background .2s ease}
 .install-btn.show{display:flex}.install-btn svg{width:20px;height:20px}.install-btn:active{transform:scale(.94)}
 
 .content-page.no-anim.active{animation:none!important}
@@ -430,9 +431,14 @@ body.modal-open .app-container{overflow:hidden}
 <div class="app-container" id="appContainer">
 
 <div class="top-bar">
-  <div id="clockView" aria-label="Jam dan tanggal">
+  <div class="top-bar-left">
+    <button class="install-btn" id="pwaInstallBtn" type="button" onclick="installPWA()" title="Install Aplikasi" aria-label="Install Aplikasi ke perangkat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    </button>
+    <div id="clockView" aria-label="Jam dan tanggal">
     <div class="clock-time"><span id="clockHH">00</span>:<span id="clockMM">00</span>:<span class="sec-flip" id="clockSS">00</span></div>
     <div class="clock-date" id="clockDate">MINGGU, 01 JANUARI 2026</div>
+    </div>
   </div>
   <div class="top-bar-profile" aria-label="Pembuat aplikasi">
     <div class="top-bar-text">
@@ -453,9 +459,6 @@ body.modal-open .app-container{overflow:hidden}
         <div class="user-badge"><div class="user-info"><div class="name">BA DANA TALANGAN</div></div></div>
       </div>
     </div>
-    <button class="install-btn" id="pwaInstallBtn" type="button" onclick="installPWA()" title="Install Aplikasi" aria-label="Install Aplikasi ke perangkat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-    </button>
   </header>
   <nav class="mobile-nav" id="mobileNav" aria-label="Navigasi aplikasi">
     <button id="tabForm" class="active" onclick="switchTab(0)">INPUT DATA</button>
