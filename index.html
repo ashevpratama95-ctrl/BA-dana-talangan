@@ -907,7 +907,7 @@ body.modal-open .app-container{overflow:hidden}
 <script>
 "use strict";
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxh0th3LxVa_WpjVHCyZgSNrZMolMh13euUSwUVv2z4VPwmSC9SJ7J3fN8xfCCQTL9bbA/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxiMJmU6nv_qiTlAL0gM7feE0jBnoCSu8t3e7joNuJ7wOkuh-CDCld4a2KnqkJGkMl/exec";
 const DRAFT_STORAGE_KEY = "baDanaTalanganDraft_v1";
 const $ = id => document.getElementById(id);
 
@@ -2344,7 +2344,11 @@ async function lanjutKirim() {
     updateLoadingProgress(60, "Mengirim ke Drive...");
 
     const jumlah = stripDigits($("inputJumlah").value);
+    const requestId = (window.crypto && typeof window.crypto.randomUUID === "function")
+      ? window.crypto.randomUUID()
+      : ("DT" + Date.now() + "_" + Math.random().toString(36).slice(2, 12));
     const payload = {
+      requestId,
       namaPetugas: $("inputNamaPetugas").value.trim().toUpperCase(),
       jabatanPetugas: $("inputJabatanPetugas").value.trim().toUpperCase(),
       namaPenghuni: $("inputNama").value.trim().toUpperCase(),
